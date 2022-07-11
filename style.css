@@ -1,0 +1,128 @@
+body {
+    background-color: #eeeeee;
+    margin: 0;
+    font-family: Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+#content {
+    display: flex;
+    flex-direction: row;
+}
+
+header {
+    background-color: #2196f3;
+    padding: 1em;
+    box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
+}
+
+#sidebar {
+    background-color: #ffffff;
+    min-height: 500px;
+    width: 20%;
+    padding: 1em;
+    box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
+}
+
+h1 {
+    margin: 0;
+    text-align: center;
+    color: #ffffff;
+}
+
+label {
+    margin: 8px 0 0 ;
+    font-weight: lighter;
+    font-size: small;
+}
+
+input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+select {
+    background-color: #ddd;
+    width: 100%;
+}
+
+button {
+    box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
+    width: 100%;
+    background-color: #2196f3;
+    border-radius: 5px;
+    padding: 0.5em;
+    color: #fff;
+    border-width: 0;
+    margin: 1em 0;
+}
+
+.status-list-item p {
+    margin: 0.25em 0;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#birds-container {
+    padding: 1.5em;
+}
+
+.bird-card {
+    float: left;
+    width: 200px;
+    height: 300px;
+    background-color: #fff;
+    margin: 1.5em;
+    box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
+    border-radius: .5em;
+}
+
+.bird-card img {
+    width: 100%;
+    border-radius: .5em .5em 0 0;
+}
+
+.bird-card h2 {
+    padding: 8px;
+    margin: 0;
+}
+
+.bird-card .information {
+    padding: 8px;
+    display: flex;
+    flex-direction: row;
+}
+
+.bird-card .values {
+    flex: .5;
+}
+
+.bird-card .headings {
+    flex: .5;
+}
+
+.bird-card .headings p {
+    margin: .25em 0;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.bird-card .values p {
+    margin: .25em 0;
+    font-weight: lighter;
+    font-size: 12px;
+}
+
+footer {
+    background-color: #2196f3;
+    padding: 1em;
+    box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
+}
+
+#footer-text {
+    text-align: center;
+    margin: 0;
+}
