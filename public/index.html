@@ -4,6 +4,7 @@
     <meta charset="utf-8"/>
     <title>🐦 Birds of Aotearoa</title>
     <link rel="stylesheet" href="style.css"/>
+    <script src="main.js"></script>
 </head>
 <body>
 <header>
@@ -16,6 +17,7 @@
         <input id="search">
         <label for="statuses">Conservation Status</label>
         <select id="statuses">
+            <option value="Any">Any</option>
             <option value="Not Threatened">Not Threatened</option>
             <option value="Naturally Uncommon">Naturally Uncommon</option>
             <option value="Relict">Relict</option>
@@ -34,8 +36,8 @@
             <option value="Status">Status</option>
             <option value="Size">Size</option>
         </select>
-        <button>Filter Results</button>
-        <h3>x Results Found</h3>
+        <button id="button" onclick="filterPressed()">Filter Results</button>
+        <h3 id="results">x Results Found</h3>
         <hr>
         <h2>Conservation Status</h2>
         <ul>

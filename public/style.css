@@ -57,6 +57,12 @@ button {
     margin: 1em 0;
 }
 
+button:hover {
+    background-color: #1b77c1;
+    cursor: pointer;
+    font-weight: bolder;
+}
+
 .status-list-item p {
     margin: 0.25em 0;
 }
