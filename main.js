@@ -31,6 +31,8 @@ function createCard(item) {
     imgCont.className = "image-container"
     const imgCapt = document.createElement("h2")
     imgCapt.textContent = item.primary_name
+    const imgCredit = document.createElement("p")
+    imgCredit.textContent = "Photo by: " + item.photo.credit
     const img = document.createElement("img")
     img.src = item.photo.source
     const name = document.createElement("h3")
@@ -61,6 +63,7 @@ function createCard(item) {
     card.appendChild(imgCont)
     imgCont.appendChild(img)
     imgCont.appendChild(imgCapt)
+    imgCont.appendChild(imgCredit)
     card.appendChild(name)
     card.appendChild(info)
     info.appendChild(headings)
