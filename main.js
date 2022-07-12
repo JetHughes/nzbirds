@@ -96,8 +96,16 @@ function filterPressed(){
             let birds = [];
             container.innerHTML = ''
             data.forEach(function(item){
-                const normalName = item.primary_name.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "")
-                if((normalName === searchTerm || searchTerm == '') && (item.status == status || status == "Any")) {
+                const names = [];
+                names.push(item.english_name.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, ""))
+                names.push(item.primary_name.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, ""))
+                names.push(item.scientific_name.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, ""))
+
+                item.other_names.forEach(function(name) {
+                    names.push(name.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, ""))
+                })
+
+                if((names.find(name => {return name === searchTerm}) || searchTerm == '') && (item.status == status || status == "Any")) {
                     birds.push(item)
                 }
             })
@@ -122,7 +130,6 @@ function filterPressed(){
         });
 
 }
-
 
 function statusRating(status){
     switch(status){
