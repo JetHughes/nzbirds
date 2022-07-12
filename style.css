@@ -91,6 +91,8 @@ ul {
 }
 
 .image-container h2 {
+    padding: 8px;
+    margin: 0;
     position: absolute;
     bottom: 8px;
     color: #fff;
@@ -98,16 +100,19 @@ ul {
 }
 
 .image-container img {
-    width: 100%;
     border-radius: .5em .5em 0 0;
+    height: 125px;
+    width: 100%;
 }
 
-.bird-card h2 {
+.bird-card h3 {
     padding: 8px;
+    font-size: 14px;
     margin: 0;
 }
 
 .bird-card .information {
+    flex: .5;
     padding: 8px;
     display: flex;
     flex-direction: row;

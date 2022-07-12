@@ -33,7 +33,7 @@ function createCard(item) {
     imgCapt.textContent = item.primary_name
     const img = document.createElement("img")
     img.src = item.photo.source
-    const name = document.createElement("h2")
+    const name = document.createElement("h3")
     name.textContent = item.english_name
     const info = document.createElement("div")
     info.className = "information"
