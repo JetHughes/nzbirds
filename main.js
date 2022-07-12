@@ -83,10 +83,10 @@ function createCard(item) {
 
 
 function filterPressed(){
-    const searchTerm = document.getElementById("search").value
+    const searchTerm = document.getElementById("search").value.toLowerCase()
     const status = document.getElementById("statuses").value
     const sortBy = document.getElementById("sort").value
-
+    
     fetch('data/nzbird.json')
         .then(function (response) {
             return response.json();
@@ -96,7 +96,8 @@ function filterPressed(){
             let birds = [];
             container.innerHTML = ''
             data.forEach(function(item){
-                if((item.primary_name == searchTerm || searchTerm == '') && (item.status == status || status == "Any")) {
+                const normalName = item.primary_name.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "")
+                if((normalName === searchTerm || searchTerm == '') && (item.status == status || status == "Any")) {
                     birds.push(item)
                 }
             })
