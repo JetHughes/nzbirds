@@ -12,15 +12,15 @@ fetch('data/nzbird.json')
     });
 
 const colors = [
-    "#01ff01",
-    "#1be600",
-    "#4eb200",
-    "#33cc00",
-    "#669900",
-    "#807f00", 
-    "#9a6600",
-    "#b34c01", 
-    "#cd3301", 
+    "#02a028",
+    "#649a31",
+    "#99cb68",
+    "#fecc33",
+    "#fe9a01",
+    "#c26967", 
+    "#9b0000",
+    "#660032", 
+    "#320033", 
     "#000", 
 ]
 
@@ -152,6 +152,8 @@ function statusRating(status){
         case "Nationally Critical": 
             return 8
         case "Data Deficient": 
+            return 9
+        case "Extinct": 
             return 9
     }
     return -1
