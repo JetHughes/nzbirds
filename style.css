@@ -165,9 +165,9 @@ footer {
     margin: 0;
 }
 
-@media screen and (min-width: 480px) {
+/* @media screen and (min-width: 480px) {
     #content {
         display: flex;
         flex-direction: column;
     }
-  }
+  } */
