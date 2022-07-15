@@ -115,7 +115,7 @@ function filterPressed(){
                     names.push(name.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, ""))
                 })
 
-                if((names.find(name => {return name === searchTerm}) || searchTerm == '') && (item.status == status || status == "Any")) {
+                if((names.find(name => {return name.includes(searchTerm)}) || searchTerm == '') && (item.status == status || status == "Any")) {
                     birds.push(item)
                 }
             })
