@@ -24,9 +24,19 @@ const colors = [
     "#000", 
 ]
 
+function highlight(card, color){
+    card.style.boxShadow = color + " 0 6px 12px -2px, " + color + " 0 3px 7px -3px"
+
+}
+function removeHighlight(card){
+    card.style.boxShadow = "rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(50, 50, 93, 0.25) 0 3px 7px -3px"
+}
+
 function createCard(item) {
     const card = document.createElement("div")
     card.className = "bird-card"
+    card.onmouseover = function() {highlight(card, colors[statusRating(item.status)])}
+    card.onmouseout = function() {removeHighlight(card)}
     const imgCont = document.createElement("div")
     imgCont.className = "image-container"
     const imgCapt = document.createElement("h2")
@@ -76,7 +86,7 @@ function createCard(item) {
     values.appendChild(status)
     headings.appendChild(weightHeading)
     values.appendChild(weight)
-    const color = colors[statusRating(item.status)]
+    const color = "rgba(50, 50, 93, 0.25)"
     card.style.boxShadow = color + " 0 6px 12px -2px, " + color + " 0 3px 7px -3px"
     document.getElementById("birds-container").appendChild(card)
 }
