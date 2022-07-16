@@ -45,8 +45,10 @@ function createCard(item) {
     imgCredit.textContent = "Photo by: " + item.photo.credit
     const img = document.createElement("img")
     img.src = item.photo.source
-    const name = document.createElement("h3")
-    name.textContent = item.english_name
+    const englishName = document.createElement("h3")
+    englishName.textContent = item.english_name
+    const scientificName = document.createElement("h4")
+    scientificName.textContent = item.scientific_name
     const info = document.createElement("div")
     info.className = "information"
     const headings = document.createElement("div")
@@ -74,7 +76,8 @@ function createCard(item) {
     imgCont.appendChild(img)
     imgCont.appendChild(imgCapt)
     imgCont.appendChild(imgCredit)
-    card.appendChild(name)
+    card.appendChild(englishName)
+    card.appendChild(scientificName)
     card.appendChild(info)
     info.appendChild(headings)
     info.appendChild(values)
