@@ -11,6 +11,8 @@ fetch('data/nzbird.json')
         console.log('error: ' + err);
     });
 
+document.getElementById("filter-button").addEventListener('click', filterPressed)
+
 const colors = [
     "#02a028",
     "#649a31",
