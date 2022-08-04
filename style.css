@@ -37,6 +37,10 @@ label {
     font-size: small;
 }
 
+#status-list p{
+    margin: 4px 0;
+}
+
 input {
     width: 100%;
     box-sizing: border-box;
@@ -80,8 +84,7 @@ ul {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
-    align-items: flex-start;   
+    justify-content: flex-start; 
 }
 
 .bird-card {
@@ -178,3 +181,10 @@ footer {
         flex-direction: column;
     }
   } */
+
+.status-list-color {
+    height: 24px;
+    width: 24px;
+    background-color: rebeccapurple;
+    border-radius: 12px;
+}
