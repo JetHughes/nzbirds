@@ -73,8 +73,12 @@ function removeHighlight(card){
 }
 
 function createCard(item) {
-
-    const birdCardPlaceholder = "<div class=\"bird-card\" style=\"box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(50, 50, 93, 0.25) 0px 3px 7px -3px;\"><div class=\"image-container\"><img src=\"{image}\"/><h2>{name}</h2><p>Photo by: {imgCredit}</p></div><h3>{engName}</h3><h4>{sciName}</h4><div class=\"information\"><div class=\"headings\"><p>Family</p><p>Order</p><p>Status</p><p>Weight</p></div><div class=\"values\"><p>{family}</p><p>{order}</p><p>{status}</p><p>{weight}</p></div></div></div>"
+    const card = document.createElement("div")
+    card.className = "bird-card"
+    card.onmouseover = function() {highlight(card, colors[statusRating(item.status)])}
+    card.onmouseout = function() {removeHighlight(card)}
+    
+    const birdCardPlaceholder = "<div class=\"bird-card\"><div class=\"image-container\"><img src=\"{image}\"/><h2>{name}</h2><p>Photo by: {imgCredit}</p></div><h3>{engName}</h3><h4>{sciName}</h4><div class=\"information\"><div class=\"headings\"><p>Family</p><p>Order</p><p>Status</p><p>Weight</p></div><div class=\"values\"><p>{family}</p><p>{order}</p><p>{status}</p><p>{weight}</p></div></div></div>"
 
     const replacements = {
         image: item.photo.source,
@@ -95,7 +99,8 @@ function createCard(item) {
         replacements[placeholderWithoutDelimiters] : placeholderWithDelimiters
     );
 
-    document.getElementById("birds-container").innerHTML += string
+    card.innerHTML += string
+    document.getElementById("birds-container").appendChild(card)
 }
 
 function filterPressed(){
