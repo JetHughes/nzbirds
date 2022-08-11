@@ -43,24 +43,21 @@ function loadStatuses(){
     const ul = document.getElementById("status-list")
     const select = document.getElementById("statuses-select")
     statuses.forEach(status => {
-        //create list
-        const li = document.createElement("li")
-        const p = document.createElement("p")
-        li.appendChild(p)
-        ul.appendChild(li)
-        p.textContent = status.name
-        p.style.color = status.color
-
+        const item = `
+        <li>
+            <div class="dot" style="background-color: ${status.color}"></div>
+            <p>${status.name}</p>
+            </li>
+            `
+            ul.innerHTML += item;
+        console.log(`appedn ${item}`)
+        
         //fill select options
         let option = document.createElement("option")
         option.value = status.name
         option.text = status.name
         select.appendChild(option)
     });
-    let option = document.createElement("option")
-    option.value = "Any"
-    option.text = "Any"
-    select.appendChild(option)
 }
 loadStatuses()
 
@@ -74,33 +71,32 @@ function removeHighlight(card){
 
 function createCard(item) {
     const card = document.createElement("div")
-    card.className = "bird-card"
+    card.className = "bird-card grid-item"
     card.onmouseover = function() {highlight(card, colors[statusRating(item.status)])}
     card.onmouseout = function() {removeHighlight(card)}
-    
-    const birdCardPlaceholder = "<div class=\"bird-card\"><div class=\"image-container\"><img src=\"{image}\"/><h2>{name}</h2><p>Photo by: {imgCredit}</p></div><h3>{engName}</h3><h4>{sciName}</h4><div class=\"information\"><div class=\"headings\"><p>Family</p><p>Order</p><p>Status</p><p>Weight</p></div><div class=\"values\"><p>{family}</p><p>{order}</p><p>{status}</p><p>{weight}</p></div></div></div>"
 
-    const replacements = {
-        image: item.photo.source,
-        imgCredit: item.photo.credit,
-        name: item.primary_name,
-        engName: item.english_name,
-        sciName: item.scientific_name,
-        family: item.family,
-        status: item.status,
-        order: item.order,
-        weight: item.size.weight.value
-    };
-
-    const string = birdCardPlaceholder.replace(
-    /{(\w+)}/g, 
-    (placeholderWithDelimiters, placeholderWithoutDelimiters) =>
-    replacements.hasOwnProperty(placeholderWithoutDelimiters) ? 
-        replacements[placeholderWithoutDelimiters] : placeholderWithDelimiters
-    );
-
-    card.innerHTML += string
-    document.getElementById("birds-container").appendChild(card)
+    card.innerHTML = `
+    <div class="image-container">
+                <div class="bird-color" style="background-color: ${colors[statusRating(item.status)]}"></div>
+                <div class="gradient"></div>
+                <img src="${item.photo.source}"/>
+                <h2>${item.primary_name}</h2>
+                <p>Photo by: ${item.photo.credit}</p>
+                </div>
+                <h3>${item.english_name}</h3>
+                <h4>${item.scientific_name}</h4>
+                <div class="information">                
+                <p class="heading">Family</p>
+                <p class="value">${item.family}</p>
+                <p class="heading">Order</p>
+                <p class="value">${item.order}</p>
+                <p class="heading">Status</p>
+                <p class="value">${item.status}</p>
+                <p class="heading">Weight</p>
+                <p class="value">${item.weight}</p>
+            </div>
+    `
+    document.getElementById("birds-grid").appendChild(card)
 }
 
 function filterPressed(){
@@ -113,15 +109,25 @@ function filterPressed(){
         return response.json();
     })
     .then(function (data) {
-        const container = document.getElementById("birds-container")
+        //clear elements not including the filter and status cards
+        let elements = [...(document.querySelectorAll(".grid-item"))]
+        elements = elements.filter(item => {
+            return !item.classList.contains("bird-card")
+        })
+        document.getElementById("birds-grid").innerHTML = ''
+        elements.forEach(element => {
+            console.log(element)
+            document.getElementById("birds-grid").appendChild(element);
+        })
+
+        //repopulate grid with elements that match filter options
         let birds = [];
-        container.innerHTML = ''
         data.forEach(function(item){
+            //get all names
             const names = [];
             names.push(item.english_name.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, ""))
             names.push(item.primary_name.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, ""))
             names.push(item.scientific_name.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, ""))
-            
             item.other_names.forEach(function(name) {
                 names.push(name.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, ""))
             })
@@ -131,6 +137,8 @@ function filterPressed(){
                 birds.push(item)
             }
         })
+
+        //sort birds
         birds.sort(function(a,b){
             switch(sortBy) {
                 case "Name":
@@ -141,9 +149,13 @@ function filterPressed(){
                     return statusRating(a.status) - statusRating(b.status)
                 }
         })
+
+        //create grid elements
         birds.forEach(function(bird){
             createCard(bird)
         })
+
+        //update result count
         const results = birds.length
         document.getElementById("results").textContent = results + " results"
     })
@@ -153,12 +165,6 @@ function filterPressed(){
     
 }
 document.getElementById("filter-button").addEventListener('click', filterPressed)
-
-statuses.forEach(item => {
-    if (item.name = "Relict") {
-        
-    }
-})
     
 function statusRating(status){
     switch(status){
@@ -184,6 +190,7 @@ function statusRating(status){
         return 9
     case "Extinct": 
         return 9
+    default:
+        return -1;
     }
-    return -1
 }

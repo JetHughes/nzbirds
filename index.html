@@ -6,34 +6,41 @@
     <link rel="stylesheet" href="style.css"/>
     <script src="main.js" defer></script>
     <script src="./data/nzbird.json"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<header>
-    <h1>🐦 Birds of Aotearoa</h1>
-</header>
-<div id="content">
-    <aside id="sidebar">
-        <h2>Filter Birds</h2>
-        <label for="search">Search</label>
-        <input id="search">
-        <label for="statuses-select">Conservation Status</label>
-        <select id="statuses-select"></select>
-        <label for="sort">Sort By</label>
-        <select id="sort">
-            <option value="Weight">Weight</option>
-            <option value="Name">Name</option>
-            <option value="Status">Status</option>
-        </select>
-        <button id="filter-button">Filter Results</button>
-        <h3 id="results"></h3>
-        <hr>
-        <h2>Conservation Status</h2>
-        <ul id="status-list"></ul>
-        <p>Conservation status from <a href="https://www.doc.govt.nz">DOC</a> Website</p>
-    </aside>
-    <div id="birds-container">
-    </div>
-</div>
+
+    <header>
+        <h1>🐦 Birds of Aotearoa</h1>
+    </header>
+   <main>
+        <div id="birds-grid">
+            <div id="filter-card" class="grid-item">
+                <div id="filter-card-content">  
+                    <h2>Filter Birds</h2>
+                    <label for="search">Search</label>
+                    <input id="search">
+                    <label for="statuses-select">Conservation Status</label>
+                    <select id="statuses-select">
+                        <option value="Any">Any</option>
+                    </select>
+                    <label for="sort">Sort By</label>
+                    <select id="sort">
+                        <option value="Weight">Weight</option>
+                        <option value="Name">Name</option>
+                        <option value="Status">Status</option>
+                    </select>
+                    <button id="filter-button">Filter Results</button>
+                    <h3 id="results"></h3>
+                </div>
+            </div>
+            <div id="status-card" class="grid-item">
+                <h2>Conservation Status</h2>
+                <ul id="status-list"></ul>
+                <p>Conservation status from <a href="https://www.doc.govt.nz">DOC</a> Website</p>
+            </aside>
+        </div>
+    </main>
 <footer>
     <p id="footer-text">Data licensed from <a href="https://www.birdsnz.org.nz">Birds New Zealand</a> for the educational use within the University of Otago.</p>
 </footer>
