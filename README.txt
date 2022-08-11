@@ -16,5 +16,4 @@ Issues
 - None
 
 Extra Features:
-- None
-
+- Bird cards are highlighted with thier status color when you mouse over them
