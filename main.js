@@ -93,7 +93,7 @@ function createCard(item) {
                 <p class="heading">Status</p>
                 <p class="value">${item.status}</p>
                 <p class="heading">Weight</p>
-                <p class="value">${item.weight}</p>
+                <p class="value">${item.size.weight.value}</p>
             </div>
     `
     document.getElementById("birds-grid").appendChild(card)
