@@ -14,3 +14,4 @@ Issues
 
 Extra Features:
 - Bird cards are highlighted with thier status color when you mouse over them
+- Sort by weight, name, status
