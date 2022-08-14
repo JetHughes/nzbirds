@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
     <title>🐦 Birds of Aotearoa</title>
-    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="style.css" />
     <script src="main.js" defer></script>
     <script src="./data/nzbird.json"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+
 <body>
 
     <header>
         <h1>🐦 Birds of Aotearoa</h1>
     </header>
-   <main>
+    <main>
         <div id="birds-grid">
             <div id="filter-card" class="grid-item">
-                <div id="filter-card-content">  
+                <div id="filter-card-content">
                     <h2>Filter Birds</h2>
                     <label for="search">Search</label>
                     <input id="search">
@@ -31,18 +33,20 @@
                         <option value="Status">Status</option>
                     </select>
                     <button id="filter-button">Filter Results</button>
-                    <h3 id="results"></h3>
+                    <h3 id="results">0 Results</h3>
                 </div>
             </div>
             <div id="status-card" class="grid-item">
                 <h2>Conservation Status</h2>
                 <ul id="status-list"></ul>
                 <p>Conservation status from <a href="https://www.doc.govt.nz">DOC</a> Website</p>
-            </aside>
+            </div>
         </div>
     </main>
-<footer>
-    <p id="footer-text">Data licensed from <a href="https://www.birdsnz.org.nz">Birds New Zealand</a> for the educational use within the University of Otago.</p>
-</footer>
+    <footer>
+        <p id="footer-text">Data licensed from <a href="https://www.birdsnz.org.nz">Birds New Zealand</a> for the
+            educational use within the University of Otago.</p>
+    </footer>
 </body>
+
 </html>
