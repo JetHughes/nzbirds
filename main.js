@@ -77,15 +77,15 @@ function createCard(item) {
 
     card.innerHTML = `
     <div class="image-container">
-                <div class="bird-color" style="background-color: ${colors[statusRating(item.status)]}"></div>
-                <div class="gradient"></div>
-                <img src="${item.photo.source}"/>
-                <h2>${item.primary_name}</h2>
-                <p>Photo by: ${item.photo.credit}</p>
-                </div>
-                <h3>${item.english_name}</h3>
-                <h4>${item.scientific_name}</h4>
-                <div class="information">                
+        <div class="bird-color" style="background-color: ${colors[statusRating(item.status)]}"></div>
+        <div class="gradient"></div>
+            <img src="${item.photo.source}"/>
+            <h2>${item.primary_name}</h2>
+            <p>Photo by: ${item.photo.credit}</p>
+        </div>
+            <h3>${item.english_name}</h3>
+            <h4>${item.scientific_name}</h4>
+            <div class="information">                
                 <p class="heading">Family</p>
                 <p class="value">${item.family}</p>
                 <p class="heading">Order</p>
@@ -94,7 +94,7 @@ function createCard(item) {
                 <p class="value">${item.status}</p>
                 <p class="heading">Weight</p>
                 <p class="value">${item.size.weight.value}${item.size.weight.units}</p>
-            </div>
+</div>
     `
     document.getElementById("birds-grid").appendChild(card)
 }
